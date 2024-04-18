@@ -75,7 +75,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
-      this.timing = 750;
+      this.timing = 2000;
 
       this.get("vans", (schema) => {
         // return new Response(400, {}, {error: "Error fetching data"})
