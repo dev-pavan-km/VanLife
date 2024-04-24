@@ -15,7 +15,7 @@ import HostVanPricing from "./pages/Host/HostVanPricing.jsx";
 import HostVanPhotos from "./pages/Host/HostVanPhotos.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Error from "./components/Error.jsx";
-import Login from "./pages/Login.jsx";
+import Login, { loginLoader } from "./pages/Login.jsx";
 import { requireAuth } from "./utils.js";
 
 const router = createBrowserRouter(
@@ -26,14 +26,10 @@ const router = createBrowserRouter(
         path="/about"
         element={<About />}
         loader={async () => {
-          const isLoggedIn = false;
-          if (!isLoggedIn) {
-            return redirect("/");
-          }
-          return null;
+          return redirect("/");
         }}
       />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login />} loader={loginLoader} />
       <Route path="/vans" element={<Vans />} loader={vansLoader} errorElement={<Error />} />
       <Route path="/vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
 
